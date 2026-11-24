@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login - Beauty Reviews</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-family: Arial, sans-serif;
+
+            background-image: url('ba.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .login-container {
+
+            width: 350px;
+
+            background: rgba(255,255,255,0.75);
+
+            padding: 40px;
+
+            border-radius: 20px;
+
+            backdrop-filter: blur(5px);
+
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+
+            text-align: center;
+        }
+
+        h1 {
+
+            color: #f40a60;
+
+            margin-bottom: 30px;
+        }
+
+        input {
+
+            width: 100%;
+
+            padding: 14px;
+
+            margin-bottom: 20px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            font-size: 16px;
+
+            box-sizing: border-box;
+        }
+
+        button {
+
+            width: 100%;
+
+            padding: 14px;
+
+            border: none;
+
+            border-radius: 30px;
+
+            background-color: #f40a60;
+
+            color: white;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        button:hover {
+
+            background-color: #c4084d;
+
+            transform: scale(1.03);
+        }
+
+        .back {
+
+            display: block;
+
+            margin-top: 20px;
+
+            text-decoration: none;
+
+            color: #f40a60;
+
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="login-container">
+
+        <h1>Login</h1>
+
+        <form>
+
+            <input type="email" placeholder="Email" required>
+
+            <input type="password" placeholder="Parolă" required>
+
+            <button type="submit">
+                Intră în cont
+            </button>
+
+        </form>
+
+        <a href="proiect.html" class="back">
+            Înapoi la Home
+        </a>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make Up Reviews</title>
+
+    <style>
+        body {
+            background-image: url('redddddd.jpg');
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ae0d0d;
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 20px;
+            width: fit-content;
+            margin: 40px auto 20px auto;
+            border-radius: 15px;
+        }
+
+        /* ================= CONTROALE FILTRARE ================= */
+        .filter-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .filter-btn {
+            background-color: #ae0d0d;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            border: none;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: 0.3s;
+        }
+
+        .filter-btn:hover {
+            background-color: #820a0a;
+            transform: scale(1.05);
+        }
+
+        /* Active status pentru buton */
+        .filter-btn.active {
+            background-color: gold;
+            color: #333;
+        }
+
+        /* ================= CONTAINER CARDS ================= */
+        .container-reviewuri {
+            width: 90%;
+            margin: 20px auto;
+        }
+
+        .review-card {
+            background-color: rgba(255, 255, 255, 0.85);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .review-card h3 {
+            color: #ae0d0d;
+            margin-bottom: 10px;
+        }
+
+        .tip-produs {
+            font-weight: bold;
+            color: #444;
+        }
+
+        .rating {
+            color: gold;
+            font-size: 22px;
+            margin: 10px 0;
+        }
+
+        .review-text {
+            color: #333;
+            line-height: 1.5;
+        }
+
+        /* ================= BUTON EXIT ================= */
+        .exit-container {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .exit-btn {
+            background-color: #ae0d0d;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            display: inline-block;
+            transition: 0.3s;
+        }
+
+        .exit-btn:hover {
+            background-color: #820a0a;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Make Up Reviews</h1>
+
+    <div class="filter-container">
+        <button class="filter-btn" id="toggleFilterBtn" onclick="filterTopReviews()">Afișează doar cele de 5 ★</button>
+    </div>
+
+    <div class="container-reviewuri">
+
+        <div class="review-card" data-rating="5">
+            <h3>Maybelline Sky High Mascara</h3>
+            <p class="tip-produs">Tip produs: Mascara</p>
+            <p class="rating">★★★★★</p>
+            <p class="review-text">
+                Oferă volum și alungire fără să încarce genele. Rezistă foarte bine pe parcursul zilei. Recomand cu drag!
+            </p>
+        </div>
+
+        <div class="review-card" data-rating="3">
+            <h3>Fenty Beauty Foundation</h3>
+            <p class="tip-produs">Tip produs: Fond de ten</p>
+            <p class="rating">★★★☆☆</p>
+            <p class="review-text">
+                Acoperirea este bună, dar oxidează destul de repede pe piele și își schimbă culoarea. Pentru tenul uscat tinde să scoată în evidență zonele deshidratate.
+            </p>
+        </div>
+
+        <div class="review-card" data-rating="5">
+            <h3>Rare Beauty Soft Pinch</h3>
+            <p class="tip-produs">Tip produs: Blush lichid</p>
+            <p class="rating">★★★★★</p>
+            <p class="review-text">
+                Foarte pigmentat și ușor de blenduit. O singură bulină mică este suficientă pentru ambii obraji. Produsul meu preferat!
+            </p>
+        </div>
+
+        <div class="review-card" data-rating="2">
+            <h3>MAC Ruby Woo</h3>
+            <p class="tip-produs">Tip produs: Ruj mat</p>
+            <p class="rating">★★☆☆☆</p>
+            <p class="review-text">
+                Nuanța de roșu este superbă, dar textura este extrem de uscată. Se aplică foarte greu pe buze și se strânge inestetic după doar o oră.
+            </p>
+        </div>
+
+        <div class="review-card" data-rating="3">
+            <h3>Huda Beauty Palette</h3>
+            <p class="tip-produs">Tip produs: Paletă farduri</p>
+            <p class="rating">★★★☆☆</p>
+            <p class="review-text">
+                Culorile sidefate sunt frumoase, însă fardurile mate sunt foarte prăfoase și se pierd la blending. La prețul acesta mă așteptam la o calitate mult mai mare.
+            </p>
+        </div>
+
+        <div class="review-card" data-rating="5">
+            <h3>NARS Radiant Concealer</h3>
+            <p class="tip-produs">Tip produs: Corector</p>
+            <p class="rating">★★★★★</p>
+            <p class="review-text">
+                Acoperă perfect cearcănele fără să încarce zona ochilor. Nu se strânge în liniile fine dacă este fixat cu puțin pudră.
+            </p>
+        </div>
+
+        <div class="review-card" data-rating="2">
+            <h3>NYX Butter Gloss</h3>
+            <p class="tip-produs">Tip produs: Gloss</p>
+            <p class="rating">★★☆☆☆</p>
+            <p class="review-text">
+                Este extrem de lipicios, iar părul mi se prinde mereu de buze din cauza lui. De asemenea, mirosul este mult prea puternic și sintetic.
+            </p>
+        </div>
+
+        <div class="review-card" data-rating="5">
+            <h3>Benefit Brow Gel</h3>
+            <p class="tip-produs">Tip produs: Gel sprâncene</p>
+            <p class="rating">★★★★★</p>
+            <p class="review-text">
+                Fixează firele de păr impecabil pe parcursul întregii zile, oferind în același timp un aspect natural, fără reziduuri albe.
+            </p>
+        </div>
+
+        <div class="review-card" data-rating="3">
+            <h3>Dior Lip Oil</h3>
+            <p class="tip-produs">Tip produs: Ulei de buze</p>
+            <p class="rating">★★★☆☆</p>
+            <p class="review-text">
+                Oferă un efect glossy elegant și hidratare de moment, dar dispare de pe buze în mai puțin de jumătate de oră. Nu își merită prețul de brand de lux.
+            </p>
+        </div>
+
+        <div class="review-card" data-rating="2">
+            <h3>Charlotte Tilbury Setting Spray</h3>
+            <p class="tip-produs">Tip produs: Spray fixare</p>
+            <p class="rating">★★☆☆☆</p>
+            <p class="review-text">
+                Pompița lasă stropi mult prea mari care strică baza de machiaj. În plus, conține mult alcool și simt că îmi usucă fața îngrozitor.
+            </p>
+        </div>
+
+        <div class="exit-container">
+            <a href="produse.html" class="exit-btn">Exit</a>
+        </div>
+
+    </div>
+
+    <script>
+        let onlyTopReviews = false;
+
+        function filterTopReviews() {
+            const cards = document.querySelectorAll('.review-card');
+            const button = document.getElementById('toggleFilterBtn');
+            
+            // Schimbăm starea filtrului
+            onlyTopReviews = !onlyTopReviews;
+
+            cards.forEach(card => {
+                const rating = card.getAttribute('data-rating');
+                
+                if (onlyTopReviews) {
+                    // Dacă filtrul e activ, ascundem tot ce NU are 5 stele
+                    if (rating !== '5') {
+                        card.style.display = 'none';
+                    }
+                    button.innerText = "Afișează toate recenziile";
+                    button.classList.add('active');
+                } else {
+                    // Dacă filtrul e inactiv, le arătăm din nou pe toate
+                    card.style.display = 'block';
+                    button.innerText = "Afișează doar cele de 5 ★";
+                    button.classList.remove('active');
+                }
+            });
+        }
+    </script>
+
+</body>
+
+</html>

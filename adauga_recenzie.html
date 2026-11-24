@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Adaugă Review - Beauty Reviews</title>
+    <link rel="stylesheet" href="stil.css"> 
+</head>
+<body class="fundal-review">
+
+    <a href="proiect.html" class="sageata-navigatie" title="Adauga recenzie">&#10140; </a>
+
+    <div class="form-container">
+        <h1>Împărtășește experiența ta</h1>
+        <p>Opinia ta ajută comunitatea noastră să strălucească!</p>
+
+        <form id="reviewForm" onsubmit="return valideazaTot()">
+            <div class="input-group">
+                <label>Nume Produs:</label>
+                <input type="text" id="numeProdus" placeholder="Ex: Ruj Matte Crimson">
+                <span id="eroareNume" class="mesaj-eroare"></span>
+                
+                <label>Tip Produs Cosmetic:</label>
+                <input type="text" id="tipProdus" placeholder="Ex: De ingrijire ten sau de machiaj">
+                <span id="eroareTip" class="mesaj-eroare"></span>
+                
+                <label>Rating:</label>
+                <div class="rating-stele">
+                    <span class="stea" data-valoare="1">&#9733;</span>
+                    <span class="stea" data-valoare="2">&#9733;</span>
+                    <span class="stea" data-valoare="3">&#9733;</span>
+                    <span class="stea" data-valoare="4">&#9733;</span>
+                    <span class="stea" data-valoare="5">&#9733;</span>
+                </div>
+                <input type="hidden" id="rating" value="0">
+                <span id="eroareRating" class="mesaj-eroare"></span>
+                
+                <label>Recenzie Detaliată:</label>
+                <textarea id="recenzie" placeholder="Împărtășește-ți experiența cu acest produs..."></textarea>
+                <span id="eroareRecenzie" class="mesaj-eroare"></span>
+            </div>
+            <button type="submit">Adauga Recenzie </button>
+        </form>
+    </div>
+
+    <script>
+        // SCRIPT NOU: Logica pentru selectarea stelelor
+        const stele = document.querySelectorAll('.stea');
+        const inputRating = document.getElementById('rating');
+
+        stele.forEach(stea => {
+            stea.addEventListener('click', function() {
+                const valoareSelectata = this.getAttribute('data-valoare');
+                inputRating.value = valoareSelectata; // Salvăm valoarea în input-ul ascuns
+
+                // Colorăm stelele selectate și le stingem pe celelalte
+                stele.forEach(s => {
+                    if (s.getAttribute('data-valoare') <= valoareSelectata) {
+                        s.classList.add('selectata');
+                    } else {
+                        s.classList.remove('selectata');
+                    }
+                });
+            });
+        });
+
+        function valideazaTot() {
+            let valid = true;
+
+            // Preluare valori
+            let nume = document.getElementById("numeProdus").value.trim();
+            let tip = document.getElementById("tipProdus").value.trim();
+            let rating = document.getElementById("rating").value; // Preia valoarea din input-ul ascuns
+            let recenzie = document.getElementById("recenzie").value.trim();
+
+            // Resetare erori
+            document.getElementById("eroareNume").innerText = "";
+            document.getElementById("eroareTip").innerText = "";
+            document.getElementById("eroareRating").innerText = "";
+            document.getElementById("eroareRecenzie").innerText = "";
+
+            // VALIDARE 1
+            if (nume === "") {
+                document.getElementById("eroareNume").innerText = "Introdu numele produsului!";
+                valid = false;
+            }
+
+            // VALIDARE 2
+            if (tip.length < 3) {
+                document.getElementById("eroareTip").innerText = "Tipul produsului trebuie să aibă minim 3 caractere!";
+                valid = false;
+            }
+
+            // VALIDARE 3 (Modificată pentru a verifica dacă s-a selectat vreo stea)
+            if (rating < 1 || rating > 5) {
+                document.getElementById("eroareRating").innerText = "Te rugăm să oferi o notă selectând stelele!";
+                valid = false;
+            }
+
+            // VALIDARE 4
+            if (recenzie.length < 10) {
+                document.getElementById("eroareRecenzie").innerText = "Recenzia trebuie să conțină minim 10 caractere!";
+                valid = false;
+            }
+
+            // Dacă totul e corect
+            if (valid) {
+                alert("Review trimis!");
+
+                // Golește câmpurile
+                document.getElementById("numeProdus").value = "";
+                document.getElementById("tipProdus").value = "";
+                document.getElementById("rating").value = "0";
+                document.getElementById("recenzie").value = "";
+                
+                // Resetăm și aspectul stelelor grafice
+                stele.forEach(s => s.classList.remove('selectata'));
+            }
+
+            return false;
+        }
+    </script>
+
+    <style>
+        body {
+            background-image: url('review.jpg'); 
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.8); 
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 500px;
+            margin-top: 100px;
+            margin-left: 50px; 
+        }
+        h1 {
+            text-align: center;
+            color: #D81B60; 
+        }
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+        input, textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        /* MODIFICARE CSS: Stilul pentru zona de stele */
+        .rating-stele {
+            display: flex;
+            gap: 5px;
+            font-size: 30px; /* Mărește dimensiunea stelelor */
+            cursor: pointer;
+        }
+        .stea {
+            color: #ccc; /* Culoarea stelelor când nu sunt selectate (gri) */
+            transition: color 0.2s ease;
+        }
+        .stea:hover, .stea.selectata {
+            color: #FFD700; /* Culoarea stelelor selectate sau la hover (auriu) */
+        }
+
+        .mesaj-eroare {
+            color: red;
+            font-size: 14px;
+        }
+        .sageata-navigatie {
+            position: fixed;
+            top: 500px;
+            right: 20px;
+            font-size: 60px;
+            text-decoration: none;
+            color: #D81B60;  
+            background-color: rgba(255, 255, 255, 0.6); 
+            padding: 10px;
+            border-radius: 50%;
+        }
+        button {
+            padding: 12px;
+            background-color: #D81B60;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px; /* Am micșorat margin-top de la 100px la 20px ca să stea mai aproape de formular */
+            width: 100%; /* Întinde butonul pe toată lățimea containerului */
+        }
+        button:hover {
+            background-color: #ad1457;
+        }
+        p {
+            text-align: center;
+            color: #D81B60;
+        }
+    </style>
+</body>
+</html>

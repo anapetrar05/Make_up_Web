@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Beauty Reviews</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('ba.jpg');
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            transition: font-style 0.4s ease; /* Tranziție fluidă pentru textul italic */
+        }
+
+        /* Clasă activată prin JavaScript pentru Romantic Mode */
+        .romantic-active {
+            font-style: italic;
+        }
+
+        /* ================= BUTOANE ANTET (AUTH + ROMANTIC) ================= */
+        .header-buttons {
+            position: fixed;
+            top: 20px;
+            right: 30px;
+            display: flex;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .header-buttons a, .romantic-btn {
+            text-decoration: none;
+            background-color: rgba(244, 10, 96, 0.9);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        /* Stil special pentru a diferenția butonul de Romantic Mode */
+        .romantic-btn {
+            background-color: rgba(216, 27, 96, 0.9);
+        }
+
+        .header-buttons a:hover, .romantic-btn:hover {
+            background-color: #c4084d;
+            transform: scale(1.05);
+        }
+
+        /* ================= TITLU ================= */
+        h1 {
+            text-align: center;
+            color: #D81B60;
+            background-color: rgba(255, 255, 255, 0.65);
+            padding: 20px;
+            margin: 120px auto 40px auto;
+            width: fit-content;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        /* ================= DESCRIERE ================= */
+        .scop-site {
+            max-width: 850px;
+            margin: 40px auto;
+            text-align: center;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.45);
+            border-radius: 20px;
+            backdrop-filter: blur(4px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        .scop-site p {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #444;
+        }
+
+        .scop-site strong {
+            color: #f40a60;
+        }
+
+        .separator {
+            width: 70px;
+            height: 4px;
+            background-color: #f40a60;
+            margin: 25px auto;
+            border-radius: 2px;
+        }
+
+        /* ================= MENIU JOS ================= */
+        .bottom-menu {
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 25px;
+            background-color: rgba(255,255,255,0.5);
+            padding: 20px 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .bottom-menu a {
+            text-decoration: none;
+            background-color: #f40a60;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .bottom-menu a:hover {
+            background-color: #c4084d;
+            transform: scale(1.05);
+        }
+
+        /* ================= RESPONSIVE ================= */
+        @media (max-width: 768px) {
+            .header-buttons {
+                right: 10px;
+                top: 10px;
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            h1 {
+                margin-top: 220px;
+                font-size: 28px;
+            }
+
+            .bottom-menu {
+                flex-direction: column;
+                width: 80%;
+                align-items: center;
+                bottom: 20px;
+            }
+
+            .bottom-menu a {
+                width: 100%;
+                text-align: center;
+            }
+
+            .scop-site {
+                margin: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-buttons">
+        <button class="romantic-btn" onclick="toggleRomanticMode()">Romantic Mode 💖</button>
+        <a href="login.html">Login</a>
+        <a href="signup.html">Sign Up</a>
+    </div>
+
+    <h1>Beauty Reviews Platform</h1>
+
+    <div class="scop-site">
+        <p>
+            Bine ai venit pe <strong>Beauty Reviews</strong>, spațiul tău dedicat autenticității.
+            Misiunea noastră este să creăm o comunitate transparentă unde pasionații de beauty
+            își împărtășesc experiențele reale.
+            Aici găsești recenzii sincere, teste de rezistență și recomandări personalizate
+            pentru ca tu să faci cea mai bună alegere pentru ritualul tău de îngrijire.
+        </p>
+        <div class="separator"></div>
+    </div>
+
+    <div class="bottom-menu">
+        <a href="adauga_recenzie.html">Adaugă Recenzie</a>
+        <a href="produse.html">Recenzii Produtos</a>
+    </div>
+
+    <script>
+        function toggleRomanticMode() {
+            // Adaugă sau șterge clasa 'romantic-active' din elementul <body>
+            document.body.classList.toggle('romantic-active');
+        }
+    </script>
+
+</body>
+</html>
